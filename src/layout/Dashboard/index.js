@@ -1,7 +1,7 @@
 import {  makeStyles, Paper } from '@material-ui/core'
 import React from 'react'
 import Header from '../../components/organismes/Header'
-import Sidebar from '../../components/organismes/Sidebar'
+import Navbar from '../../components/organismes/Navbar'
 import {  } from '../../config/redux/actions'
 import './dashboard.scss'
 
@@ -43,7 +43,7 @@ const Dashboard = (props) =>{
     return (
         <div>
             <Header/>
-            <Sidebar/>
+            <Navbar/>
             <div className={classes.wrapper}>
                 <div className={classes.contentContainer}>
                     <div className={classes.content}>
@@ -60,4 +60,4 @@ const Dashboard = (props) =>{
 
 
 
-export default (Dashboard)
+export default Dashboard
