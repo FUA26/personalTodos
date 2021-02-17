@@ -1,6 +1,7 @@
 import React from 'react'
 import { CssBaseline, Grid, makeStyles, Paper, Typography } from '@material-ui/core'
 import { fullLogo } from '../../assets';
+import FormLogin from '../../components/molecules/FormLogin';
 
 const useStyles = makeStyles((theme)=>({
     root: {
@@ -50,7 +51,7 @@ function Login() {
                         <Typography variant="subtitle1" fontWeight={800}>
                             Login to your account
                         </Typography>
-                        
+                        <FormLogin></FormLogin>
                     </div>
                 </div>
             </Grid>
