@@ -3,18 +3,22 @@ import React from 'react'
 import {  useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { setLogout } from '../../../config/redux/actions/loginAction';
-
+import ListMenu from '../../atoms/Sidebar/ListMenu';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 
   
   const items = [
     {
       href: '/',
-      title: 'Dashboard'
+      title: 'Dashboard',
+      icon: DashboardIcon
     },
     {
       href: '/todo',
-      title: 'Todo List'
+      title: 'Todo List',
+      icon: AssignmentIcon
     },
   ];
   
@@ -88,23 +92,7 @@ function Navbar({ onMobileClose, openMobile }) {
           <Box p={2}>
             <List>
               {items.map((item) => (
-                    <ListItem
-                    disableGutters key={item.href}
-                  >
-                    <Button
-                      
-                    >
-                      {Icon && (
-                        <Icon
-                          className={classes.icon}
-                          size="20"
-                        />
-                      )}
-                      <span >
-                        {item.title}
-                      </span>
-                    </Button>
-                  </ListItem>
+                  <ListMenu key={item.href} title={item.title} Icon={item.icon}></ListMenu>
               ))}
             </List>
           </Box>
