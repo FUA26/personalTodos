@@ -10,3 +10,15 @@ export const chageOrder =(droppableId,copiedItems) =>{
         dispatch({type:'UPDATE_DATA_ITEM',droppableId,copiedItems})
     }
 }
+
+export const chageDay =(data) =>{
+    return(dispatch)=>{
+        
+        // console.log("Before : ",data)
+        data.event.start = data.start
+        data.event.end = data.end
+        let newEvent = data.event
+        // console.log("From Action : ",newEvent)
+        dispatch({type:'UPDATE_DAY_ITEM',newEvent})
+    }
+}

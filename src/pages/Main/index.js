@@ -1,14 +1,19 @@
-import { Box } from '@material-ui/core';
-import { MoreVert } from '@material-ui/icons';
+import { Box,makeStyles } from '@material-ui/core';
+import { BorderRightOutlined, MoreVert } from '@material-ui/icons';
 import React,{ useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useDispatch ,useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import clsx from 'clsx';
 import { chageOrder, chageStage } from '../../config/redux/actions';
 import './Todo.scss'
 
 
-
+const useStyles = makeStyles(theme => ({
+  sideBorder: {
+    borderLeftColor: theme.palette.secondary.main,
+  }
+}));
 
 function Main() {
   const {columns} = useSelector(state =>state.todoReducer)
@@ -25,6 +30,7 @@ function Main() {
       const destItems = [...destColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
       destItems.splice(destination.index, 0, removed);
+      console.log(sourceItems,destItems)
       dispatch(chageStage(source.droppableId,sourceItems,destination.droppableId,destItems))
     } else {
       const column = columns[source.droppableId];
@@ -35,6 +41,8 @@ function Main() {
     }
   };
 
+
+  const classes = useStyles();
 
   // console.log("Diluar Effect : ",columns)
   return (
@@ -89,13 +97,15 @@ function Main() {
                                       ...provided.draggableProps.style,
                                       borderRadius: 10
                                     }}
-                                    className="listTodo"
+                                    // className="listTodo"
+                                    
+                                    className={clsx("listTodo", classes.sideBorder)}
                                   >
                                     <Box>
                                         
                                     </Box>
                                     <Box  flexGrow={1} alignItems="center">
-                                        <p>{item.content}</p>
+                                        <p>{item.title}</p>
 
                                     </Box>
                                     <Box>

@@ -1,6 +1,16 @@
+import React,{forwardRef } from 'react'
 import { Button, ListItem, makeStyles, colors } from '@material-ui/core'
 import { Label } from '@material-ui/icons';
-import React from 'react'
+import { NavLink as RouterLink } from 'react-router-dom';
+
+const CustomRouterLink = forwardRef((props, ref) => (
+  <div
+    ref={ref}
+    style={{ flexGrow: 1 }}
+  >
+    <RouterLink {...props} />
+  </div>
+));
 
 const useStyles = makeStyles(theme => ({
     item: {
@@ -58,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-function ListMenu({title,Icon,isActive,rest}) {
+function ListMenu({title,Icon,isActive,href,rest}) {
     const classes = useStyles();
     return (
     <ListItem
@@ -69,6 +79,9 @@ function ListMenu({title,Icon,isActive,rest}) {
         <Button
           activeClassName={classes.active}
           className={classes.buttonLeaf}
+          component={CustomRouterLink}
+          exact
+          to={href}
         >
           {Icon && <Icon className={classes.icon} />}
           {title}

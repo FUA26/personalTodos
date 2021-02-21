@@ -6,6 +6,7 @@ import { setLogout } from '../../../config/redux/actions/loginAction';
 import ListMenu from '../../atoms/Sidebar/ListMenu';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import {  AlarmOn, EventAvailable, Forum, VideoCall } from '@material-ui/icons';
 
 
   
@@ -16,10 +17,31 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
       icon: DashboardIcon
     },
     {
+      href: '/attendance',
+      title: 'Attendance',
+      icon: AlarmOn
+    },
+    {
       href: '/todo',
       title: 'Todo List',
       icon: AssignmentIcon
     },
+    {
+      href: '/agenda',
+      title: 'Agenda',
+      icon: EventAvailable
+    },
+    {
+      href: '/chat',
+      title: 'Chats',
+      icon: Forum
+    },
+    {
+      href: '/meeting',
+      title: 'Meeting Call',
+      icon: VideoCall
+    },
+
   ];
   
   const useStyles = makeStyles(() => ({
@@ -92,7 +114,7 @@ function Navbar({ onMobileClose, openMobile }) {
           <Box p={2}>
             <List>
               {items.map((item) => (
-                  <ListMenu key={item.href} title={item.title} Icon={item.icon}></ListMenu>
+                  <ListMenu key={item.href} title={item.title} Icon={item.icon} href={item.href}></ListMenu>
               ))}
             </List>
           </Box>
