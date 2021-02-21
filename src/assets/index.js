@@ -6,5 +6,16 @@ import illus from './illus/illus.svg'
 import illus1 from './illus/illus1.png'
 import illus2 from './illus/illus2.png'
 import illus3 from './illus/illus3.png'
+import illus4 from './illus/illus4.png'
 
-export {logo,fullLogo,illus,illus1,illus2,illus3,logoAlt,fullLogoAlt}
+export {
+    logo,
+    fullLogo,
+    illus,
+    illus1,
+    illus2,
+    illus3,
+    illus4,
+    logoAlt,
+    fullLogoAlt
+}

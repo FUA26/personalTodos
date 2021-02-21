@@ -4,18 +4,27 @@ import { error} from 'react-toastify-redux'
 
 export const setLogin1 =(payload) =>{
     return(dispatch)=>{
-        API.postLogin(payload)
-        .then( result =>{
-            if (result.code === '00') {
-                var ciphertext = AES.encrypt(JSON.stringify(result.data), 'secret key 123').toString();
-                sessionStorage.setItem('todoUser', ciphertext);
-                let dataPayload = result.data
-                dispatch({type:'UPDATE_USER',data:dataPayload})
-            }
-        })
-        .catch(error => {
-            console.log(error)
-        })
+        
+        if (payload.email == "test@mail.com" && payload.password == "123456") {
+            var ciphertext = AES.encrypt("Dummy Data", 'secret key 123').toString();
+            sessionStorage.setItem('todoUser', ciphertext);
+            return true
+        } else {
+            return false
+        }
+
+        // API.postLogin(payload)
+        // .then( result =>{
+        //     if (result.code === '00') {
+        //         var ciphertext = AES.encrypt(JSON.stringify(result.data), 'secret key 123').toString();
+        //         sessionStorage.setItem('todoUser', ciphertext);
+        //         let dataPayload = result.data
+        //         dispatch({type:'UPDATE_USER',data:dataPayload})
+        //     }
+        // })
+        // .catch(error => {
+        //     console.log(error)
+        // })
     }
 }
 
@@ -45,8 +54,8 @@ export const setLogin =(payload) =>(dispatch)=>{
 
 export const setLogout =() =>{
     return(dispatch)=>{
-        var data=[]
-        dispatch({type:'UPDATE_USER',data:data})
+        // var data=[]
+        // dispatch({type:'UPDATE_USER',data:data})
         sessionStorage.removeItem("todoUser");
     }
 }

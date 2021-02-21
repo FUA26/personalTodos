@@ -19,9 +19,9 @@ function AuthenticationRoute({children, ...rest}){
 
     const checkAuth= () =>{
         var session = sessionStorage.getItem("todoUser")
-        console.log(session)
+        // console.log(session)
         if (session !=null) {
-            dispatch(updateUser(getStorage()))
+            // dispatch(updateUser(getStorage()))
             return true
         }
         return false

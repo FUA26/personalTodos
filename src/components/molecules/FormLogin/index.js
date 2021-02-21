@@ -6,7 +6,7 @@ import { Form } from '../../atoms/Forms/Form';
 import { Input } from '../../atoms/Forms/Input';
 import { PrimaryButton } from '../../atoms/Forms/PrimaryButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogin } from '../../../config/redux/actions/loginAction';
+import { setLogin, setLogin1 } from '../../../config/redux/actions/loginAction';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const schema = yup.object().shape({
@@ -29,16 +29,17 @@ const FormLogin = (props) => {
      resolver: yupResolver(schema),
    });
  
-   const onSubmit = async data => {
+   const onSubmit = data => {
      let payload = {
          "email": data.email,
          "password": data.password,
      }
-     let login = await dispatch(setLogin(payload)).catch(err => err)
-     if (login) {
-         let { from } = location.state || { from: { pathname: "/" } };
-         history.replace(from);
-     }
+     let login = dispatch(setLogin1(payload))
+     console.log(login)
+      if (login) {
+          let { from } = location.state || { from: { pathname: "/" } };
+          history.replace(from);
+      }
    };
  
    return (
@@ -48,6 +49,7 @@ const FormLogin = (props) => {
        id="v"
        type="text"
        label="Email"
+       autoComplete='off'
        name="email"
        error={!!errors.email}
        helperText={errors?.email?.message}
@@ -57,6 +59,7 @@ const FormLogin = (props) => {
        id="password"
        type="password"
        label="Password"
+       autoComplete='off'
        name="password"
        error={!!errors.password}
        helperText={errors?.password?.message}

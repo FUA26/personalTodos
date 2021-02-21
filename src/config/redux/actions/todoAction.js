@@ -19,6 +19,6 @@ export const chageDay =(data) =>{
         data.event.end = data.end
         let newEvent = data.event
         // console.log("From Action : ",newEvent)
-        dispatch({type:'UPDATE_DAY_ITEM',newEvent})
+        dispatch({type:'UPDATE_DAY_ITEM',newEvent,})
     }
 }

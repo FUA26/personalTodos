@@ -1,20 +1,17 @@
 import React from 'react'
 import { CssBaseline, Grid, makeStyles, Paper, Typography } from '@material-ui/core'
-import { fullLogo } from '../../assets';
+import { fullLogo, illus1 } from '../../assets';
 import FormLogin from '../../components/molecules/FormLogin';
 
 const useStyles = makeStyles((theme)=>({
     root: {
         height: '100vh',
       },
-    image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
+    imageSide: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent:"center",        
+        flexDirection: 'column',     },
     logo:{
         height: '60px'
     },
@@ -23,9 +20,14 @@ const useStyles = makeStyles((theme)=>({
         flexDirection: 'column',
         padding: theme.spacing(4),
         alignItems: 'flex-start',
+        height: "100%"
     },
     contentForm:{
-        margin: "15% 0px"
+        display:"flex",
+        margin: "15% 0px",      
+        flexDirection: 'column',      
+        justifyContent:"center", 
+        height: "100%"
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -33,6 +35,9 @@ const useStyles = makeStyles((theme)=>({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+    },
+    img:{
+        width: "80%"
     }
 }))
 
@@ -45,8 +50,11 @@ function Login() {
                 <div className={classes.paper} height="100%">
                     <img src={fullLogo} alt="logo" className={classes.logo}></img>
                     <div className={classes.contentForm}>
-                        <Typography variant="h4" fontWeight={800}>
-                            Hi, Welcome Back!
+                        <Typography variant="h1" fontWeight={800}>
+                            Hi,
+                        </Typography>
+                        <Typography variant="h1" fontWeight={800} color="secondary">
+                            Welcome Back!
                         </Typography>
                         <Typography variant="subtitle1" fontWeight={800}>
                             Login to your account
@@ -55,8 +63,18 @@ function Login() {
                     </div>
                 </div>
             </Grid>
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
-            
+            <Grid item xs={false} sm={4} md={7} className={classes.imageSide}>
+                <img src={illus1} alt="ilustrasi 1" className={classes.img}></img>
+                <div className={classes.submit}>
+                    <Typography variant="h1" gutterBottom color="primary" align="center">
+                        Wofh Apps
+                    </Typography>
+                    <Typography variant="h4" gutterBottom color="secondary">
+                        Working form Home Application
+                    </Typography>
+                </div>
+
+            </Grid>
         </Grid>
     )
 }
